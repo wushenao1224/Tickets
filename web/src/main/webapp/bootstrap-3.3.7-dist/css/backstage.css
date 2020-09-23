@@ -1,0 +1,223 @@
+/*淘票票头部样式*/
+.title>span{
+	color: white;
+    font-size: 29px;
+    text-align: center;
+    font-weight: 900;
+    margin-left: 50px;
+}
+.title{
+	background-color: #fd4848;
+    height: 50px;
+}
+.title>a{
+	color: white;
+	margin-right: 20px;
+}
+/*页面左边样式*/
+.body-left{
+	background-color: #eae8e8;
+    width: 255px;
+    height: 710px;
+    padding-top: 20px;
+}
+.body-left .list-group .list-group-item{
+	osition: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #eae8e8;
+    border: 0px solid #ddd;
+    color: #9c9797;
+    text-indent: 40px;
+    font-size: 15px;
+}
+.body-left .list-group .list-group-item.xuanZhong{
+    background: red;
+    color: black;
+}
+.list-group-item{
+	cursor:pointer;
+}
+.erXuanZhong{
+	color: black;
+}
+/*页面右边样式 */
+.body-rigeht{
+	width: 1264px;
+	height: 100%;
+}
+.user{
+	text-align: center;
+    widows: 500px;
+    height: 200px;
+    padding-top: 30px;
+}
+.user>span{
+	display: block;
+    font-size: 18px;
+}
+/*放映信息样式*/
+.table-info{
+	margin-top: 40px;
+    height: 440px;
+}
+/*售票信息隐藏*/
+.shou{
+	
+}
+/*影院添加样式*/
+#select-city,#select-type,#select-address,#select-speech,#select-filmID,#select-cinemaID{
+	margin-left: 10px;
+	width: 400px;
+}
+.yingYuanInsert,.yingYuanUpdate{
+	margin-top: 80px;
+	display: none;
+}
+#text-film,#text-cinema{
+	width: 400px;
+}
+#formregister{
+	width: 1000px;
+	margin-left: 150px;
+}
+.cinema-submit{
+	width: 500px;
+    margin-right: 150px;
+}
+/*影院添加地图*/
+.amap-icon img,
+.amap-marker-content img{
+    width: 25px;
+    height: 34px;
+}
+ .marker {
+    position: absolute;
+    top: -20px;
+    right: -118px;
+    color: #fff;
+    padding: 4px 10px;
+    box-shadow: 1px 1px 1px rgba(10, 10, 10, .2);
+    white-space: nowrap;
+    font-size: 12px;
+    font-family: "";
+    background-color: #25A5F7;
+    border-radius: 3px;
+}
+
+.input-card{
+    width: 18rem;
+    z-index: 170;
+}
+
+
+.input-card .btn{
+    margin-right: .8rem;
+}
+
+.input-card .btn:last-child{
+    margin-right: 0;
+}
+ .map{
+    height: 100%;
+    width: 100%;
+    float: left;
+}
+ #container,#containerUpdate {
+   	width: 90%;
+    margin-left: 50px;
+    height: 300px;
+}
+/*影片添加样式*/
+.yingPianInsert,.yingPianUpdate{
+	margin-top: 80px;
+    margin-left: auto;
+    display: none;
+}
+/*type样式*/
+.a-upload ,.a-uploadUpdate{
+    padding: 7px 10px;
+    height: 30px;
+    width: 140px;
+    line-height: 20px;
+    
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    z-index: 3;
+    left: 15px;
+    bottom: -20px;
+    position: relative;
+    /* right: 26px; */
+    /* margin-right: 2px; */
+    left: -165px;
+    bottom: -185px;
+}
+
+.a-upload  input ,.a-uploadUpdate input{
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+    
+}
+
+.a-upload:hover ,.a-uploadUpdate:hover{
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
+.img-title{
+	position: absolute;
+    right: 260px;
+    top: 160px;
+}
+.film-submit{
+	width: 400px;
+    margin-right: 428px;
+}
+/*成功或失败提示信息*/
+.type_TiShi{
+	position: fixed;
+	left: 40%;
+	top: 10%;
+	width: 300px; 
+	z-index: 10000;
+	
+}
+/*放映添加样式*/
+.fangYingInsert,.fangYingUpdate{
+	margin-top: 60px;
+	display: none;
+}
+/*影院影片详情样式*/
+.yingYuanXiang,.yingPianXiang,.fangYingXiang{
+	display: none;
+	margin-top: 50px;
+}
+.yingYuanXiang .form-inline,.yingPianXiang .form-inline,.fangYingXiang .form-inline{
+	margin-left: 340px;
+}
+.yingYuanXiang .form-inline .form-group,.yingPianXiang .form-inline .form-group ,.fangYingXiang .form-inline .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+/*影片详情样式下图片样式*/
+.yingPianXiang tbody img{
+	width: 50px;
+    max-width: 100%;
+    max-height: 100%;
+}
