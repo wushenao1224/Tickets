@@ -18,4 +18,6 @@ public interface userMapper {
 
     //查询返回出当前userID外有没有相同用户名个数
     Integer selectuserID(String username,Integer userID);
+
+    Integer updateUser(user user);
 }

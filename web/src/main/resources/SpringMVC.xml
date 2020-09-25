@@ -29,5 +29,6 @@
     <mvc:resources mapping="/bootstrap-3.3.7-dist/css/**" location="/bootstrap-3.3.7-dist/css/"/>
     <mvc:resources mapping="/bootstrap-3.3.7-dist/img/**" location="/bootstrap-3.3.7-dist/img/"/>
     <!--页面转换-->
-    <mvc:view-controller path="/insert" view-name="insert"/>
+    <mvc:view-controller path="/registerLogin" view-name="register"/>
+
 </beans>
