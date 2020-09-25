@@ -25,9 +25,9 @@
     <mvc:annotation-driven/>
 
     <!--过滤静态资源-->
-    <mvc:resources mapping="/js/**" location="/js/"/>
-    <mvc:resources mapping="/css/**" location="/css/"/>
-
+    <mvc:resources mapping="/bootstrap-3.3.7-dist/js/**" location="/bootstrap-3.3.7-dist/js/"/>
+    <mvc:resources mapping="/bootstrap-3.3.7-dist/css/**" location="/bootstrap-3.3.7-dist/css/"/>
+    <mvc:resources mapping="/bootstrap-3.3.7-dist/img/**" location="/bootstrap-3.3.7-dist/img/"/>
     <!--页面转换-->
     <mvc:view-controller path="/insert" view-name="insert"/>
 </beans>

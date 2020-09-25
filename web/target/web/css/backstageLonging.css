@@ -1,0 +1,60 @@
+.longin-body{
+	border-radius: 10px;
+    width: 600px;
+    height: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: auto;
+    background-color: white;
+    border: 1px white solid;
+}
+.longin-right{
+	width: 500px;
+}
+.longin-left img{
+	width: 200px;
+}
+.col-sm-4 input{
+	width: 291px;
+    margin-left: 50px;
+}
+.longin-right>h3{
+	color: red;
+    font-weight: bolder;
+    margin-top: 50px;
+    margin-left: 64px;
+    margin-bottom: 20px;
+}
+.form-control-feedback {
+    line-height: 50px;
+    left: 20px;
+}
+.help-block{
+	font-size: 12px;
+    margin-right: -115px;
+}
+.form-control-feedback img{
+	width: 35px;
+    margin-bottom: 19px;	
+}
+.backstageSubmit{
+	width: 295px;
+    margin-right: 109px;
+}
+.shouye {
+    position: fixed;
+    width: 37px;
+    /* right: 211px; */
+    top: 6px;
+    left: 28px;
+}
+/*成功或失败提示信息*/
+.type_TiShi{
+	position: fixed;
+	left: 40%;
+	top: 10%;
+	width: 300px; 
+	z-index: 10000;
+	
+}
