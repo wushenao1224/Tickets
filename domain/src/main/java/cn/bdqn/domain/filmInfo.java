@@ -1,6 +1,5 @@
 package cn.bdqn.domain;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 /*
@@ -14,7 +13,6 @@ public class filmInfo {
 	private String advFile;//电影图片
 	private String actor;//演员
 	private String director;//导演
-	@DateTimeFormat(pattern="yyyy-MM-dd")//页面写入数据库时格式化
 	private Date dateTime;//上映时间
 	private int timelong;//放映时长    以分钟为单位
 	private double ticketPrice;//票价

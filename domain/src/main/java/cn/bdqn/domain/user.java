@@ -10,7 +10,7 @@ public class user {
 	private String title_img;//头像
 	
 	//提供get和set方法
-	public int getUserID() {
+	public Integer getUserID() {
 		return userID;
 	}
 	public void setUserID(int userID) {

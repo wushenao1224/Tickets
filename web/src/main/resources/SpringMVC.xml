@@ -31,4 +31,13 @@
     <!--页面转换-->
     <mvc:view-controller path="/registerLogin" view-name="register"/>
 
+    <!--id的名字必须叫：multipartResolver-->
+
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 最大上传文件大小 -->
+        <property name="maxUploadSize" value="8388608" />
+        <!--设置编码-->
+        <property name="defaultEncoding" value="UTF-8"></property>
+    </bean>
 </beans>
