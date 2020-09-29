@@ -31,7 +31,7 @@ public class filmInfoServiceImpl implements filmInfoService {
 
 	@Override
 	public filmInfo selectFilmID(Integer filmID) {
-		return null;
+		return filmInfo.selectFilmID(filmID);
 	}
 
 	@Override
