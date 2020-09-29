@@ -108,4 +108,12 @@ public class userController {
 
         return "redirect:/home";
     }
+    @RequestMapping("/user")
+    public String user(Integer userID,Model model){
+        user user=userService.selectUser(userID);
+        user.setUserID(userID);
+        //List<ticketInfo> ticketList=ticket.selectTicketUserId(userID);
+        model.addAttribute("user", user);
+        return "user";
+    }
 }
