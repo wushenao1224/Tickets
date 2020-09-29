@@ -429,13 +429,13 @@ var map = new AMap.Map("container", {
         //console.info(citysearch);
         //自动获取用户IP，返回当前城市
         citysearch.getLocalCity(function(status, result) {
-        	console.info(status);
-        	console.info(result);
+        	//console.info(status);
+        	//console.info(result);
             if (status === 'complete' && result.info === 'OK') {
                 if (result && result.city && result.bounds) {
                     var cityinfo = result.city;
                     var citybounds = result.bounds;
-                    console.info(citybounds);
+                    //console.info(citybounds);
                     $("#dd_title").html(cityinfo+"<span class='caret'>");
                     //document.getElementById('info').innerHTML = '您当前所在城市：'+cityinfo;
                     //地图显示当前城市
@@ -452,7 +452,7 @@ var map = new AMap.Map("container", {
     $("#userName").on("click", userKuangQieHuan);
     //判断用户是否登录显示不同信息表
     function userKuangQieHuan(){
-    	//alert("进去");
+    	alert($("#xiuGaibody [name='sex']"));
     	var userID=$("#userName").attr("userid");
     	if(userID!="-1"&&userID.length>0){
     		$("#xiuGaiinputText").attr("disabled","disabled");
@@ -463,8 +463,11 @@ var map = new AMap.Map("container", {
     			//console.info(data);
     			$("#xiuGaiinputText").val(data.username);
     			$("#xiuGaiinputPassword").val(data.password);
-    			$("#xiuGaibody [name='xiuGaisex']").each(function(){
-    				if($(this).val()=="女"){
+
+				//console.info(data.sex);
+    			$("#xiuGaibody [name='sex']").each(function(){
+    				//console.info($(this));
+    				if($(this).val()==data.sex){
     					$(this).attr("checked","checked");
     				}
     			})
@@ -486,7 +489,7 @@ var map = new AMap.Map("container", {
    	var name=$("#inputText").val();
    	if(name==""){
    		$("#inputText").parent().parent().addClass("has-error");
-   		$("#inputText").parent().next().text("昵称不能为空！");
+   		$("#inputText").parent().next().text("昵称不能为空！xxxxx");
    		return false;
    	}else{
    		$.post("./userAjax","name="+name,function(data){
@@ -536,7 +539,7 @@ var map = new AMap.Map("container", {
    $("#xiuGaiChexkbox").click(function(){
    		$("#xiuGaiinputText").removeAttr("disabled");
    		$("#xiuGaiinputPassword").removeAttr("disabled");
-   		$("#xiuGaibody [name='xiuGaisex']").removeAttr("disabled");
+   		$("#xiuGaibody [name='sex']").removeAttr("disabled");
    		$(this).attr("disabled","disabled");
    	
    })

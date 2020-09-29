@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @Controller
@@ -52,5 +55,55 @@ public class homeController {
         }
         //req.getRequestDispatcher("ce.jsp").forward(req, resp);
         return "ce";
+    }
+    @RequestMapping("/selectDateTime")
+    @ResponseBody
+    public List<String> selectDateTime(String dateTime){
+        //时间转换格式
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        String dangDate=dateTime;
+        String houDateString=null;
+        if(dateTime.equals("0")){
+            System.out.println("等于空");
+            Date newDate=new Date();
+            newDate.setDate(newDate.getDate()-1);
+
+            //获取当前时间格式
+            dangDate=dateFormat.format(newDate);
+            //获取当下月的第一天
+            Date houDate=new Date();
+            houDate.setMonth(houDate.getMonth()+1);
+            houDate.setDate(1);
+            houDateString=dateFormat.format(houDate);
+            //返回list集合影片信息
+        }else{
+            try {
+                //System.out.println("不等于空");
+                //传进来date类型字符串转换为date类型
+                Date DangDate=dateFormat.parse(dateTime);
+                //DangDate.setDate(DangDate.getDate()-1);
+                DangDate.setMonth(DangDate.getMonth()+1);
+                DangDate.setDate(1);
+                houDateString=dateFormat.format(DangDate);
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        List<filmInfo> listFilmInfo=filmInfo.selectShangYing(dangDate,houDateString,"");
+
+        List<String> dataList=new ArrayList<String>();
+        for (filmInfo f : listFilmInfo) {
+            //System.out.println(f.getDateTime());
+            String[] l=dateFormat.format(f.getDateTime()).split("-");
+            String day=l[l.length-1];
+            dataList.add(day);
+        }
+        //System.out.println(dataList.get(0));
+//        String dataJSON=JSONObject.toJSONString(dataList);
+//        //System.out.println(dataJSON);
+//        resp.getWriter().write(dataJSON);
+        return dataList;
     }
 }

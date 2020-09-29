@@ -86,22 +86,22 @@
 								<div class="form-group">
 								    <label for="inputText" class="col-sm-2 control-label text-center">昵称</label>
 								    <div class="col-sm-6">
-								      <input type="text" class="form-control"  id="xiuGaiinputText" onblur="xiuTextName()" name="xiuUserName" placeholder="昵称" disabled>
+								      <input type="text" class="form-control"  id="xiuGaiinputText" onblur="xiuTextName()" name="username" placeholder="昵称" disabled>
 								    </div>
 								     <span class="help-block text-danger"></span>
 								</div>
 								<div class="form-group">
 								    <label for="inputPassword" class="col-sm-2 control-label">密码</label>
 								    <div class="col-sm-6">
-								      <input type="password" class="form-control" id="xiuGaiinputPassword" onblur="xiuPossword()" name="xiuUserpassword" placeholder="密码" disabled>
+								      <input type="password" class="form-control" id="xiuGaiinputPassword" onblur="xiuPossword()" name="password" placeholder="密码" disabled>
 								    </div>
 								    <span class="help-block text-danger"></span>
 								</div>
 								<div class="form-group">
 								    <label class="col-sm-2 control-label xingbie">性别</label>
 								    <div class="col-sm-4" style="transform: translateX(25px);">
-								      <input type="radio" name="xiuGaisex" value="男" disabled>&nbsp;男&nbsp;&nbsp;
-								      <input type="radio" name="xiuGaisex" value="女" disabled>&nbsp;女&nbsp;&nbsp;
+								      <input type="radio" name="sex" value="男" id="nansex" disabled>&nbsp;男&nbsp;&nbsp;
+								      <input type="radio" name="sex" value="女" disabled>&nbsp;女&nbsp;&nbsp;
 								    </div>
 								    <span id="checked" class="help-block text-danger"></span>
 								</div>

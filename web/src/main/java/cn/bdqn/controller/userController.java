@@ -2,6 +2,7 @@ package cn.bdqn.controller;
 
 import cn.bdqn.domain.user;
 import cn.bdqn.service.userService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,5 +71,41 @@ public class userController {
         imgtitle.transferTo(new File(destPath,originalFilename));
         userService.insertTitleImg(userID,originalFilename);
         return "forward:/home";
+    }
+    @RequestMapping("/xiuUser")
+    public String xiuUser(user user){
+        Integer num=userService.servletUpdate(user);
+        if(num>0){
+            return "forward:/home";
+        }else{
+            return "redirect:/registerLogin";
+        }
+    }
+    @RequestMapping("/deleteCookie")
+    public String deleteCookie(@CookieValue(name = "userID",required = false)Long userID,HttpServletResponse response){
+        if(userID!=null){
+            //userID保存到Cookie中
+            Cookie userN=new Cookie("userID","-1");
+            userN.setMaxAge(0);
+            response.addCookie(userN);
+        }
+        return "redirect:/home";
+    }
+    @RequestMapping("/disembarkUser")
+    public String disembarkUser(String zhuusername, String zhupassword, Model model,HttpServletResponse response){
+        Integer userID=userService.selectUserID(zhuusername,zhupassword);
+        if(userID!=null&&userID>0){
+            //提示用户登录成功
+            model.addAttribute("tiShiUser",1);
+            //保存用户到Cookie中
+            Cookie cookie=new Cookie("userID",userID.toString());
+            cookie.setMaxAge(60*60*24*7);
+            response.addCookie(cookie);
+        }else{
+            //提示用户登录失败
+            model.addAttribute("tiShiUser",2);
+        }
+
+        return "redirect:/home";
     }
 }

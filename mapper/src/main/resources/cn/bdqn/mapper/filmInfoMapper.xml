@@ -22,7 +22,7 @@
         select *
         from filminfo,filmtype
         WHERE dateTime &gt;= #{dangDate} AND dateTime &lt; #{houDate} AND filminfo.typeID=filmtype.typeID
-        ORDER BY dateTime desc
+        ORDER BY dateTime ${pai}
     </select>
     <!--//查询前十电影-->
     <select id="selectFilmAll" resultType="cn.bdqn.domain.filmInfo">
@@ -84,13 +84,13 @@
     <select id="selectZhiDingFilmInfo" resultType="cn.bdqn.domain.filmInfo" >
         SELECT *
         FROM  filminfo,filmtype
-        WHERE  dateTime like ? AND filminfo.typeID=filmtype.typeID
+        WHERE  dateTime like concat(#{arg0},"%") AND filminfo.typeID=filmtype.typeID
     </select>
     <!--由Id进行查询-->
     <select id="selectFilmID" resultType="cn.bdqn.domain.filmInfo">
     SELECT *
     FROM  filmInfo,filmtype
-    WHERE filmID=? AND filminfo.typeID=filmtype.typeID
+    WHERE filmID=#{arg0} AND filminfo.typeID=filmtype.typeID
     </select>
     <!-- 影片查询 id ,名字name-->
     <select id="selectIDname" resultType="cn.bdqn.domain.filmInfo">

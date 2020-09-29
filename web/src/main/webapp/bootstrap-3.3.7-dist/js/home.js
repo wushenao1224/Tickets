@@ -7,19 +7,18 @@ $(".dao").eq(0).addClass("title_header");
 ri();
 //日历渲染
 function ri() {
-
 	//必要的数据
 	//今天的年 月 日 ；本月的总天数；本月第一天是周几？？？
 	var iNow = 0;
 
 	function run(n) {
+
 		//console.info(n);
 		var oDate = new Date(); //定义时间
 		oDate.setMonth(oDate.getMonth() + n); //设置月份
 		var year = oDate.getFullYear(); //年
 		var month = oDate.getMonth(); //月
 		var today = oDate.getDate(); //日
-
 		//计算本月有多少天
 		var allDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
 
@@ -54,23 +53,35 @@ function ri() {
 			var val = $(this).text();
 			//异步查询时间
 			var $this=$(this);
-			var dateTime=year+"-"+(month +1)+"-1";
+			var dateTime=year+"-"+(month +1)+"-01";
+			if((month+1)<=9){
+                dateTime=year+"-0"+(month +1)+"-01";
+            }
 			if(n==0){
 				dateTime=year+"-"+(month +1)+"-"+today;
+                if((month+1)<=9){
+                    dateTime=year+"-0"+(month +1)+"-"+today;
+                }
 			}
+
 			$.post("./selectDateTime","dateTime="+dateTime,function(data){
 				for(var i in data){
 					var pantian=val;
 					if(val.length==1){
-					pantian="0"+val;
+					    pantian="0"+val;
 					}
 					if(i==0&&data[0]==pantian){
 						//标记第一次出现天
 						$this.addClass('red');
 						$this.on("click",zhidingpai());
 						//定义function函数进行查找数据
-						var zd=year+"-0"+(month)+"-"+data[i];
-						//console.info(zd);
+
+                        var zd=year+"-"+(month)+"-"+data[i];
+                        if(month<=9){
+                            zd=year+"-0"+(month)+"-"+data[i];
+                        }
+                        zd=dateTime.substring(0,dateTime.lastIndexOf("-")+1)+data[i];
+                        //console.info(zd);
 						zhidingyingpian(zd);
 					}
 					if(pantian==data[i]){
@@ -140,7 +151,7 @@ function ri() {
 			$(this).siblings().removeClass("red");
 			var dayTime=$(this).text();
 			//获取当前日历上月份
-			var month=$("#calendar h4").text().substring(5,6);
+			var month=$("#calendar h4").text().substring(5,$("#calendar h4").text().lastIndexOf("月"));
 			//获取当前日历上年份
 			var year=$("#calendar h4").text().substring(0,4);
 			if(dayTime.length==1){
@@ -149,14 +160,14 @@ function ri() {
 			if(month.length==1){
 				month="0"+month;
 			}
-			
+			//console.info(year+"-"+month+"-"+dayTime);
 			zhidingyingpian(year+"-"+month+"-"+dayTime);
 		})
 	}
 	//获取指定时间
 	function zhidingyingpian(dateTime){
 		$.post("./selectZhiDingFilmInfo","dateTime="+dateTime,function(data){
-			$("#zhiDing>img").attr("src","http://localhost:8080/filmDB/bootstrap-3.3.7-dist/img/"+data.advFile);
+			$("#zhiDing>img").attr("src","http://localhost:8080/web/bootstrap-3.3.7-dist/img/"+data.advFile);
 			$("#zhiDing li").eq(0).text("片名："+data.filmName);
 			var zhuyan=data.director;
 			if(zhuyan.length>7){
@@ -196,7 +207,7 @@ $(".jijiang").click(function(){
 				</div>
 			</div>*/
 			//创建img标签
-			var $img=$("<img src='http://localhost:8080/filmDB/bootstrap-3.3.7-dist/img/"+data[i].advFile+"'/>");
+			var $img=$("<img src='http://localhost:8080/web/bootstrap-3.3.7-dist/img/"+data[i].advFile+"'/>");
 			//创建ul标签即添加li内容
 			var $ul=$("<ul class='xin' filmID='"+data[i].filmID+"'></ul>");
 			var $li_1=$("<li class='list-unstyled'>片名："+data[i].filmName+"</li>");
@@ -240,7 +251,7 @@ $(".reying").click(function(){
 		for(var i=0;i<4;i++){
 			
 			//创建img标签
-			var $img=$("<img src='http://localhost:8080/filmDB/bootstrap-3.3.7-dist/img/"+data[i].advFile+"'/>");
+			var $img=$("<img src='http://localhost:8080/web/bootstrap-3.3.7-dist/img/"+data[i].advFile+"'/>");
 			//创建ul标签即添加li内容
 			var $ul=$("<ul class='xin' filmID='"+data[i].filmID+"'></ul>");
 			var $li_1=$("<li class='list-unstyled'>片名："+data[i].filmName+"</li>");

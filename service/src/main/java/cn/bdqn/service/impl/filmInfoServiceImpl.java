@@ -21,7 +21,7 @@ public class filmInfoServiceImpl implements filmInfoService {
 
 	@Override
 	public filmInfo selectZhiDingFilmInfo(String dateTime) {
-		return null;
+		return filmInfo.selectZhiDingFilmInfo(dateTime);
 	}
 
 	@Override

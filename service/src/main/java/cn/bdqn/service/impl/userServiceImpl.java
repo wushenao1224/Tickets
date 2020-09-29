@@ -22,7 +22,7 @@ public class userServiceImpl implements userService {
 
 	@Override
 	public Integer selectUserID(String userName, String password) {
-		return null;
+		return userMapper.selectUserID(userName,password);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class userServiceImpl implements userService {
 
 	@Override
 	public Integer servletUpdate(user user) {
-		return null;
+		return userMapper.updateUser(user);
 	}
 
 	@Override
