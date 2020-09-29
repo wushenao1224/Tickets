@@ -24,7 +24,7 @@
     <select id="selectCinemaCount" resultType="Integer">
         SELECT COUNT(1)
         FROM  ticketinfo
-        WHERE  playID IN(select playID FROM playinfo where cinemaID=#{cinemaID})
+        WHERE  playID IN (select playID FROM playinfo where cinemaID=#{cinemaID})
     </select>
     <!--增加影院信息-->
     <insert id="Insertcinema" parameterType="cn.bdqn.domain.cinema">
@@ -50,4 +50,17 @@
         WHERE cinemaID= #{cinemaID}
     </update>
 
+    <!--根据电影院名或者地址查询信息-->
+    <select id="selectCinemaAll" resultType="cn.bdqn.domain.cinema">
+        select *
+        from cinema
+        <where>
+            <if test="cinemaName !='' and cinemaName !=null">
+                and cinemaName like concat('%',#{cinemaName},'%')
+            </if>
+            <if test="cinemaAddress !='' and cinemaAddress !=null">
+                and address like concat('%',#{cinemaAddress},'%')
+            </if>
+        </where>
+    </select>
 </mapper>

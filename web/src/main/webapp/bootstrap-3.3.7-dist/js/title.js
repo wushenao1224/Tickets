@@ -453,7 +453,7 @@ var map = new AMap.Map("container", {
     $("#userName").on("click", userKuangQieHuan);
     //判断用户是否登录显示不同信息表
     function userKuangQieHuan(){
-    	alert($("#xiuGaibody [name='sex']"));
+    	//alert($("#xiuGaibody [name='sex']"));
     	var userID=$("#userName").attr("userid");
     	if(userID!="-1"&&userID.length>0){
     		$("#xiuGaiinputText").attr("disabled","disabled");

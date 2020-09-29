@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface cinemaService {
 
-	List<cinema> selectCinemaAll(String sqlString, List<String> sqlList);
+	List<cinema> selectCinemaAll(String cinemaName,String cinemaAddress);
 
 	cinema selectCinemaID(Integer cinemaID);
 

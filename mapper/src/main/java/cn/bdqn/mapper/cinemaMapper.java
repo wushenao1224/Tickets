@@ -1,13 +1,15 @@
 package cn.bdqn.mapper;
 
 import cn.bdqn.domain.cinema;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface cinemaMapper {
     //查询全部电影院
     List<cinema> selectAll();
-
+    //根据电影院名或者所在地查询
+    public List<cn.bdqn.domain.cinema> selectCinemaAll(@Param("cinemaName") String cinemaName, @Param("cinemaAddress") String cinemaAddress);
     List<cinema> selectCinemaAlles();
     //电影院ID
     cinema selectCinemaID(Integer cinemaID);

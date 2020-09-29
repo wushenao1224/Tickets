@@ -12,19 +12,19 @@ public class cinemaServiceImpl implements cinemaService {
 	@Autowired
 	private cinemaMapper cinema;
 
-	@Override
-	public List<cinema> selectCinemaAll(String sqlString, List<String> sqlList) {
-		return null;
+
+	public List<cn.bdqn.domain.cinema> selectCinemaAll(String cinemaName, String cinemaAddress) {
+		return cinema.selectCinemaAll(cinemaName,cinemaAddress);
 	}
 
 	@Override
 	public cinema selectCinemaID(Integer cinemaID) {
-		return null;
+		return cinema.selectCinemaID(cinemaID);
 	}
 
 	@Override
 	public Integer selectCinemaCount(Integer cinemaID) {
-		return null;
+		return cinema.selectCinemaCount(cinemaID);
 	}
 
 	@Override
