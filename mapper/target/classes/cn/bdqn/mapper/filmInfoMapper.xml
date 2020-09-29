@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.bdqn.mapper.filmInfoMapper">
+    <!--查询两时间差之间电影的个数-->
     <select id="selectCountFilm" resultType="Integer">
         select COUNT(1)
         from filminfo
@@ -15,12 +16,15 @@
             </if>
         </where>
     </select>
+
+    <!--查询两时间的电影-->
     <select id="selectDate" resultType="cn.bdqn.domain.filmInfo">
         select *
         from filminfo,filmtype
         WHERE dateTime &gt;= #{dangDate} AND dateTime &lt; #{houDate} AND filminfo.typeID=filmtype.typeID
         ORDER BY dateTime desc
     </select>
+    <!--//查询前十电影-->
     <select id="selectFilmAll" resultType="cn.bdqn.domain.filmInfo">
         SELECT f.filmID,f.filmName
         FROM   ticketinfo as t,playinfo as p,filminfo as f
@@ -28,5 +32,77 @@
         GROUP BY f.filmID
         ORDER BY COUNT(f.filmID) desc
         LIMIT 10
+    </select>
+    <!--增加影片信息-->
+    <insert id="filmInfoInsert" parameterType="cn.bdqn.domain.filmInfo">
+        insert into filminfo(filmName, typeID, advFile, actor, director, dateTime, timelong, ticketPrice, region, speech, details)values(#{filmName},#{typeID},#{advFile},#{actor},#{director},#{dateTime},#{timelong},#{ticketPrice},#{region},#{speech},#{details})
+    </insert>
+    <!--修改影片信息-->
+    <update id="filmInfoUpdate" parameterType="cn.bdqn.domain.filmInfo">
+        update
+        filminfo
+        <trim prefix="set" suffixOverrides=",">
+           <if test="filmName != null and filmName != ''">
+               filmName=#{filmName},
+           </if>
+           <if test="typeID !=null and typeID !=''">
+               typeID=#{typeID},
+           </if>
+           <if test="advFile !=null and advFile !=''">
+               advFile=#{advFile},
+           </if>
+           <if test="actor !=null and actor !=''">
+               actor=#{actor},
+           </if>
+           <if test="director !=null and director !=''">
+               director=#{director},
+           </if>
+           <if test="dateTime !=null and dateTime !=''">
+               dateTime=#{dateTime},
+           </if>
+           <if test="timelong !=null and timelong !=''" >
+               timelong=#{timelong},
+           </if>
+           <if test="ticketPrice !=null and ticketPrice !=''">
+               ticketPrice=#{ticketPrice},
+           </if>
+           <if test="region !=null and region !=''">
+               region=#{region},
+           </if>
+           <if test="speech !=null and speech !=''">
+               speech=#{speech},
+            </if>
+            <if test="details !=null and details !=''">
+                details=#{details}
+            </if>
+
+
+        </trim>
+        where  filmID= #{filmID}
+    </update>
+    <!--查询指定时间-->
+    <select id="selectZhiDingFilmInfo" resultType="cn.bdqn.domain.filmInfo" >
+        SELECT *
+        FROM  filminfo,filmtype
+        WHERE  dateTime like ? AND filminfo.typeID=filmtype.typeID
+    </select>
+    <!--由Id进行查询-->
+    <select id="selectFilmID" resultType="cn.bdqn.domain.filmInfo">
+    SELECT *
+    FROM  filmInfo,filmtype
+    WHERE filmID=? AND filminfo.typeID=filmtype.typeID
+    </select>
+    <!-- 影片查询 id ,名字name-->
+    <select id="selectIDname" resultType="cn.bdqn.domain.filmInfo">
+    SELECT *
+    FROM filmInfo
+        <where>
+            <if test="filmID !='' and filmID !=null">
+                and filmID=#{filmID}
+            </if>
+            <if test="userID !='' and userID !=null">
+                and filmName=#{filmName}
+            </if>
+        </where>
     </select>
 </mapper>
