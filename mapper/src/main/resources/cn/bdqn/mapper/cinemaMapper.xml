@@ -14,4 +14,40 @@
         GROUP BY c. cinemaID ORDER BY COUNT(c.cinemaID) desc
         LIMIT 10
     </select>
+    <!--查询电影院Id-->
+    <select id="selectCinemaID" resultType="cn.bdqn.domain.cinema">
+        SELECT *
+        FROM cinema
+        WHERE cinemaID=#{cinemaID}
+    </select>
+    <!--以影院查 询出票信息id 。在以id查询出票个数-->
+    <select id="selectCinemaCount" resultType="Integer">
+        SELECT COUNT(1)
+        FROM  ticketinfo
+        WHERE  playID IN(select playID FROM playinfo where cinemaID=#{cinemaID})
+    </select>
+    <!--增加影院信息-->
+    <insert id="Insertcinema" parameterType="cn.bdqn.domain.cinema">
+        INSERT INTO cinema(cinemaName,address,fulladdress,Lng,Lat)VALUES(cinemaName=#{cinemaName},address=#{address},fulladdress=#{fulladdress},Lng=#{Lng},Lat=#{Lat})
+    </insert>
+    <!--更新影院信息-->
+    <update id="Updatecinema" parameterType="cn.bdqn.domain.cinema">
+        UPDATE cinema
+        <trim prefix="set" suffixOverrides=",">
+        <if test="cinemaName !=null and cinemaName !=''">
+            cinemaName=#{cinemaName},
+        </if>
+        <if test="address !=null and address != ''" >
+            address=#{address},
+        </if>
+        <if test="Lng !=null and Lng !=''">
+            Lng=#{Lng},
+        </if>
+        <if test="Lat !=null and Lat !=''">
+            Lat=#{Lat}
+        </if>
+        </trim>
+        WHERE cinemaID= #{cinemaID}
+    </update>
+
 </mapper>
