@@ -448,6 +448,7 @@ var map = new AMap.Map("container", {
     }
     showCityInfo();
   //注册与修改显示
+
     $("#titleimg").click(userKuangQieHuan);
     $("#userName").on("click", userKuangQieHuan);
     //判断用户是否登录显示不同信息表

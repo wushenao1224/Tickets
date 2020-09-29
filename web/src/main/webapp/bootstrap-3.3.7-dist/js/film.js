@@ -22,7 +22,7 @@ $(".jijiang").click(function(){
 				</div>
 			</div>*/
 			//创建img标签
-			var $img=$("<img src='http://localhost:8080/filmDB/bootstrap-3.3.7-dist/img/"+data[i].advFile+"'/>");
+			var $img=$("<img src='http://localhost:8080/web/bootstrap-3.3.7-dist/img/"+data[i].advFile+"'/>");
 			//创建ul标签即添加li内容
 			var $ul=$("<ul class='xin' filmID='"+data[i].filmID+"'></ul>");
 			var $li_1=$("<li class='list-unstyled'>片名："+data[i].filmName+"</li>");
@@ -66,7 +66,7 @@ $(".reying").click(function(){
 		for(var i in data){
 			
 			//创建img标签
-			var $img=$("<img src='http://localhost:8080/filmDB/bootstrap-3.3.7-dist/img/"+data[i].advFile+"'/>");
+			var $img=$("<img src='http://localhost:8080/web/bootstrap-3.3.7-dist/img/"+data[i].advFile+"'/>");
 			//创建ul标签即添加li内容
 			var $ul=$("<ul class='xin' filmID='"+data[i].filmID+"'></ul>");
 			var $li_1=$("<li class='list-unstyled'>片名："+data[i].filmName+"</li>");
