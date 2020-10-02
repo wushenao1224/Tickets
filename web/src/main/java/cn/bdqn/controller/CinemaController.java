@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-public class cinemaMapper {
+public class CinemaController {
     @Autowired
     private cinemaService cinemaService;
     @RequestMapping("/cinema")

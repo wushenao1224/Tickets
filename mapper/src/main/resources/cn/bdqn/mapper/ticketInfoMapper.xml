@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.mapper.ticketInfoMapper">
+    <resultMap id="userId" type="cn.bdqn.domain.ticketInfo">
+        <!--playInfo表数据-->
+        <result property="playInfo.startTime" column="startTime"/>
+        <result property="playInfo.endTime" column="endTime"/>
+        <!--电影院表数据-->
+        <result property="cinema.cinemaName" column="cinemaName"/>
+        <!--电影票表数据-->
+        <result property="film.filmID" column="filmID"/>
+        <result property="film.advFile" column="advFile"/>
+        <result property="film.dateTime" column="dateTime"/>
+        <result property="film.actor" column="actor"/>
+        <result property="film.director" column="director"/>
+        <result property="film.region" column="region"/>
+        <result property="film.filmName" column="filmName"/>
+
+        <result property="ticketTime" column="ticketTime"/>
+    </resultMap>
+    <select id="selectTicketUserId" resultMap="userId">
+        SELECT *
+        FROM filminfo as f,cinema as c, ticketinfo as  t,playinfo as  p
+        WHERE t.userID=#{userID} and t.playID=p.playID AND p.cinemaID=c.cinemaID AND p.filmID=f.filmID
+        ORDER BY p.endTime desc ,t.playID
+    </select>
+
+    <select id="selectTicketUserIdKanguo" resultMap="userId">
+        SELECT *
+        FROM filminfo as f,cinema as c, ticketinfo as  t,playinfo as  p
+        WHERE t.userID=#{userID} and t.playID=p.playID AND p.cinemaID=c.cinemaID AND p.filmID=f.filmID
+        ORDER BY f.filmID
+    </select>
+</mapper>

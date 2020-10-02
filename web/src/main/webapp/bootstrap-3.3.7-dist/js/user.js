@@ -31,7 +31,7 @@ function gaibian(){
 					zhang=1;
 					playid=date[i].playID;
 					var img=$("<img class='media-object img-rounded' style='width: 120px;height: 192px;max-height: 100%;max-width: 100%;'/>");
-					img.attr("src","http://localhost:8080/filmDB/bootstrap-3.3.7-dist/img/"+date[i].film.advFile);
+					img.attr("src","http://localhost:8080/web/bootstrap-3.3.7-dist/img/"+date[i].film.advFile);
 					var a=$("<a class='pull-left' href='javascript:void(0);'></a>").append(img);
 					var $h4=$("<h4 class='media-heading'>"+date[i].film.filmName+"</h4>");
 					//console.info(date[i].playID);
@@ -56,7 +56,7 @@ function gaibian(){
 					
 					var enddate=new moment(date[i].playInfo.endTime).format("YYYY-MM-DD HH:mm:ss");
 					if(new Date(enddate)<=new Date()){
-						var pianyi=$("<img src='http://localhost:8080/filmDB/bootstrap-3.3.7-dist/img/yifangying.png' class='pianyi' />");
+						var pianyi=$("<img src='http://localhost:8080/web/bootstrap-3.3.7-dist/img/yifangying.png' class='pianyi' />");
 						media_body.append(pianyi);
 					}
 					var media=$("<div class='media'></div>");
@@ -86,7 +86,7 @@ function gaibian(){
 					count++;
 					filmid=date[i].film.filmID;
 					var img=$("<img class='media-object img-rounded' style='width: 120px;height: 192px;max-height: 100%;max-width: 100%;'/>");
-					img.attr("src","http://localhost:8080/filmDB/bootstrap-3.3.7-dist/img/"+date[i].film.advFile);
+					img.attr("src","http://localhost:8080/web/bootstrap-3.3.7-dist/img/"+date[i].film.advFile);
 					var a=$("<a class='pull-left' href='./selectFilmID?filmID="+filmid+"'></a>").append(img);
 					var $h4=$("<h4 class='media-heading'>"+date[i].film.filmName+"</h4>");
 					//时间戳转换为时间

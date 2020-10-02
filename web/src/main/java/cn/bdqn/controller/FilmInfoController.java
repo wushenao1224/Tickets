@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-public class filmInfoMapper {
+public class FilmInfoController {
     @Autowired
     private filmInfoService filmInfoService;
     @RequestMapping("/selectZhiDingFilmInfo")
