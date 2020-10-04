@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -45,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div>类型：${filmInfo.typeName }</div>
 							<div>制片国家/地区：${filmInfo.region }</div>
 							<div>片长：${filmInfo.timelong }分钟</div>
-							<div>上映时间：${filmInfo.dateTime }</div>
+							<div>上映时间：<fmt:formatDate value="${filmInfo.dateTime }" pattern="yyyy-MM-dd"/></div>
 							<div>剧情介绍：${filmInfo.details }</div>
 					  	</div>
 					</div>
@@ -63,8 +64,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="media-body">
 					    	<div class="media-div"><a href="${pageContext.request.contextPath }/selectCinemaID?cinemaID=${playInfo.cinemaID }">影院名：${playInfo.cinema.cinemaName }</a></div>
 							<div class="media-div">票价：${playInfo.sellingFare }元</div>
-							<div class="media-div">开始时间：${playInfo.startTime }</div>
-							<div class="media-div">结束时间：${playInfo.endTime }</div>
+							<div class="media-div">开始时间：<fmt:formatDate value="${playInfo.startTime }" pattern="hh:mm:ss"/></div>
+							<div class="media-div">结束时间：<fmt:formatDate value="${playInfo.endTime }" pattern="hh:mm:ss"/></div>
 					  	</div>
 					</div>
 				</c:forEach>

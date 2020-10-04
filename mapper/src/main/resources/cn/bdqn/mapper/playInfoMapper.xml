@@ -49,7 +49,12 @@
        WHERE filmID=#{filmID}
     </delete>
     <!--查询电影影院ID,当前时间，结束时间-->
-    <select id="selectFilmID" resultType="cn.bdqn.domain.playInfo">
+    <resultMap id="filmIDMap" type="cn.bdqn.domain.playInfo">
+        <result property="cinema.cinemaID" column="cinemaID"/>
+        <result property="cinema.cinemaName" column="cinemaName"/>
+        <result property="cinemaID" column="cinemaID"></result>
+    </resultMap>
+    <select id="selectFilmID" resultMap="filmIDMap">
         SELECT *
         from playinfo as p,filminfo as i,filmtype as t,cinema as c
         WHERE i.typeID=t.typeID AND p.filmID=i.filmID AND p.cinemaID=c.cinemaID
@@ -58,11 +63,25 @@
     </select>
 
     <!--查询电影D,当前时间，结束时间；-->
-    <select id="selectCinemaID" resultType="cn.bdqn.domain.playInfo">
+    <resultMap id="cinemaIDMap" type="cn.bdqn.domain.playInfo">
+        <!--电影票表数据-->
+        <result property="film.actor" column="actor"/>
+        <result property="film.advFile" column="advFile"/>
+        <result property="film.dateTime" column="dateTime"/>
+        <result property="film.details" column="details"/>
+        <result property="film.director" column="director"/>
+        <result property="film.filmID" column="filmID"/>
+        <result property="film.filmName" column="filmName"/>
+        <result property="film.typeName" column="typeName"/>
+        <result property="film.region" column="region"/>
+        <result property="film.timelong" column="timelong"/>
+        <result property="film.speech" column="speech"/>
+    </resultMap>
+    <select id="selectCinemaID" resultMap="cinemaIDMap">
         SELECT *
         FROM playinfo as p,filminfo as i,filmtype as t,cinema as c
         WHERE i.typeID=t.typeID and p.filmID=i.filmID and p.cinemaID=c.cinemaID
-         and c.cinemaID=#{cinemaID} and p.startTime &gt;#{dangDateString} and p.endTime &gt;#{houDateString} ORDER BY p.startTime
+         and c.cinemaID=#{cinemaID} and p.startTime &gt; #{dangDateString} and p.endTime &lt; #{houDateString} ORDER BY p.startTime
     </select>
     <!--根据电影放映信息表Id查询,-->
     <select id="selectPlayID" resultType="cn.bdqn.domain.playInfo">

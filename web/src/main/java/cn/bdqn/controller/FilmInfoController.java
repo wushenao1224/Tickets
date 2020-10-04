@@ -3,6 +3,7 @@ package cn.bdqn.controller;
 import cn.bdqn.domain.filmInfo;
 import cn.bdqn.domain.playInfo;
 import cn.bdqn.service.filmInfoService;
+import cn.bdqn.service.playInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,8 @@ import java.util.List;
 public class FilmInfoController {
     @Autowired
     private filmInfoService filmInfoService;
+    @Autowired
+    private playInfoService playInfoService;
     @RequestMapping("/selectZhiDingFilmInfo")
     @ResponseBody
     public filmInfo selectZhiDingFilmInfo(String dateTime){
@@ -90,9 +93,9 @@ public class FilmInfoController {
         dangDate.setMinutes(0);
         dangDate.setSeconds(0);
         String houDateString=dateFormat.format(dangDate);
-    //List<playInfo> playInfolist=playInfoService.selectFilmID(filmID,dangDateString,houDateString);
+        List<playInfo> playInfolist=playInfoService.selectFilmID(filmID,dangDateString,houDateString);
         //System.out.println(f.getFilmName());
-    //model.addAttribute("playInfoList", playInfolist);
+        model.addAttribute("playInfoList", playInfolist);
         model.addAttribute("filmInfo", f);
         return "danFilm";
     }

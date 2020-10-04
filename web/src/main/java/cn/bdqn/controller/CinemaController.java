@@ -1,7 +1,9 @@
 package cn.bdqn.controller;
 
 import cn.bdqn.domain.cinema;
+import cn.bdqn.domain.playInfo;
 import cn.bdqn.service.cinemaService;
+import cn.bdqn.service.playInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ import java.util.List;
 public class CinemaController {
     @Autowired
     private cinemaService cinemaService;
+    @Autowired
+    private cn.bdqn.service.playInfoService playInfoService;
     @RequestMapping("/cinema")
     private String cinema(String cha, String cinemaName, String cinemaAddress, Model model){
         List<cinema> listCinema=cinemaService.selectCinemaAll(cinemaName,cinemaAddress);
@@ -39,10 +43,10 @@ public class CinemaController {
         dangDate.setMinutes(0);
         dangDate.setSeconds(0);
         String houDateString=dateFormat.format(dangDate);
-    //List<playInfo> playInfolist=playInfoService.selectCinemaID(cinemaID,dangDateString,houDateString);
+        List<playInfo> playInfolist=playInfoService.selectCinemaID(cinemaID,dangDateString,houDateString);
 
         //System.out.println(f.getFilmName());
-    //req.setAttribute("playInfoList", playInfolist);
+        model.addAttribute("playInfoList", playInfolist);
         cinema c=cinemaService.selectCinemaID(cinemaID);
         model.addAttribute("cinema", c);
         return "dancinema";

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -67,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li class="list-unstyled">票价：${playInfo.sellingFare }元</li>
 						</ul>
 						<div>
-							播放时间${playInfo.startTime}-${playInfo.endTime}
+							播放时间 <fmt:formatDate value="${playInfo.startTime}" pattern="hh:mm:ss"/>-<fmt:formatDate value="${playInfo.endTime}" pattern="hh:mm:ss"/>
 						</div>
 					</div>
 				
