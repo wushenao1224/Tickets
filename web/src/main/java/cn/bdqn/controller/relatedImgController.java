@@ -11,6 +11,7 @@ import java.util.List;
 
 @Controller
 public class relatedImgController {
+
     @Autowired
     private relatedImgService relatedImgService;
     //相关电影图片表进行查询；
