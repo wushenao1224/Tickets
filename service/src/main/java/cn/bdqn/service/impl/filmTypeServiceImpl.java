@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 public class filmTypeServiceImpl implements filmTypeService {
 
 
-	@Override
 	public List<filmType> selectAll() {
 		return null;
 	}
